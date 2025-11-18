@@ -1,0 +1,39 @@
+# --- Allowed operations (Tuple) ---
+operations = ("add", "sub", "mul", "div")
+
+# --- History (List) ---
+history = []
+
+# --- Dictionary mapping ---
+calc = {
+    "add": lambda a, b: a + b,
+    "sub": lambda a, b: a - b,
+    "mul": lambda a, b: a * b,
+    "div": lambda a, b: a / b if b != 0 else "Error: Division by zero"
+}
+
+print("---- saurya Calculator ----")
+print("Operations:", operations)
+print("Type 'exit' to stop.")
+
+while True:
+    op = input("\nEnter operation: ").lower()
+    if op == "exit":
+        break
+
+    if op not in operations:
+        print("Invalid operation! Try again.")
+        continue
+
+    num1 = float(input("Enter first number: "))
+    num2 = float(input("Enter second number: "))
+
+    result = calc[op](num1, num2)
+    print("Result:", result)
+
+    # Save to history list
+    history.append((op, num1, num2, result))
+
+print("\n--- Calculation History ---")
+for item in history:
+    print("Operation:", item)
